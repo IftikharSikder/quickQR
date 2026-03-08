@@ -17,6 +17,7 @@ class CustomTextField extends StatelessWidget {
       },
       decoration: InputDecoration(
           border: _outlineInputBorder(context: context, isErrorBorder: false),
+          enabledBorder: _outlineInputBorder(context: context, isErrorBorder: false),
           focusedBorder: _outlineInputBorder(context: context, isErrorBorder: false),
           errorBorder: _outlineInputBorder(context: context, isErrorBorder: false),
           focusedErrorBorder: _outlineInputBorder(context: context, isErrorBorder: false),

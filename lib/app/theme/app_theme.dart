@@ -21,7 +21,7 @@ class AppTheme {
       error: Color(0xFFd74030),
       onError: Colors.white,
       surface: primaryColor,
-      onSurface: Colors.white,
+      onSurface: Colors.black,
     ),
   );
 }

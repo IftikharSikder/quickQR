@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_qr/app/theme/app_text_style.dart';
 import 'package:quick_qr/core/constants/app_constants.dart';
 import 'package:quick_qr/core/ui/dimensions.dart';
 import 'package:quick_qr/core/widgets/custom_appbar.dart';
@@ -25,7 +26,11 @@ class _QrGeneratorScreenState extends State<QrGeneratorScreen> {
           padding: EdgeInsets.all(Dimensions.paddingSizeDefault),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [CustomTextField(controller: _qrTextController, validationText: '')],
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(AppConstants.qrLabelText, style: AppTextStyle.labelTextStyle.copyWith(fontWeight: FontWeight.bold)),
+              CustomTextField(controller: _qrTextController, validationText: AppConstants.qrEmptyFieldText, )
+            ],
           ),
         ),
       ),

@@ -9,5 +9,8 @@ class AppConstants {
 
   //qr generator screen
   static const String generateQR = "Generate QR Code";
-  static const String qrText = "Enter Some Text";
+  static const String qrLabelText = "Enter Text";
+  static const String qrHintText = "Enter text...";
+  static const String qrButtonText = "GENERATE";
+  static const String qrEmptyFieldText = "Please enter some text!";
 }

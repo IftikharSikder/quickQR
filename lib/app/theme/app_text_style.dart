@@ -1,19 +1,12 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:quick_qr/core/constants/app_constants.dart';
+import 'package:quick_qr/core/ui/dimensions.dart';
 
 class AppTextStyle {
   static final TextStyle labelTextStyle = TextStyle(
     fontFamily: 'Roboto',
-    fontSize: 14
+    color: AppConstants.primaryColor.withValues(alpha: .9),
+    fontSize: Dimensions.fontSizeDefault
   );
 }
-/*
-import 'package:flutter/material.dart';
 
-class AppTextStyles {
-  static final TextStyle robotoRegular = TextStyle(
-    fontFamily: "Roboto",
-    fontWeight: FontWeight.w400,
-  );
-}*/

@@ -3,6 +3,7 @@ import 'package:quick_qr/app/theme/app_text_style.dart';
 import 'package:quick_qr/core/constants/app_constants.dart';
 import 'package:quick_qr/core/ui/dimensions.dart';
 import 'package:quick_qr/core/widgets/custom_appbar.dart';
+import 'package:quick_qr/core/widgets/custom_button.dart';
 import 'package:quick_qr/core/widgets/custom_text_field.dart';
 
 class QrGeneratorScreen extends StatefulWidget {
@@ -29,7 +30,8 @@ class _QrGeneratorScreenState extends State<QrGeneratorScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(AppConstants.qrLabelText, style: AppTextStyle.labelTextStyle.copyWith(fontWeight: FontWeight.bold)),
-              CustomTextField(controller: _qrTextController, validationText: AppConstants.qrEmptyFieldText, )
+              CustomTextField(controller: _qrTextController, validationText: AppConstants.qrEmptyFieldText),
+              CustomButton(buttonText: AppConstants.qrLabelText)
             ],
           ),
         ),

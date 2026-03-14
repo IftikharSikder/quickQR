@@ -12,6 +12,7 @@ class AppTheme {
       titleTextStyle: TextStyle(fontSize: Dimensions.fontSizeLarge),
       toolbarHeight: 40,
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(backgroundColor: Colors.blue)),
     colorScheme: ColorScheme(
       primary: primaryColor,
       onPrimary: Colors.white,
@@ -23,5 +24,6 @@ class AppTheme {
       surface: primaryColor,
       onSurface: Colors.black,
     ),
+    useMaterial3: true,
   );
 }

@@ -4,7 +4,8 @@ import 'package:quick_qr/core/ui/dimensions.dart';
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String validationText;
-  const CustomTextField({super.key, required this.controller, required this.validationText});
+  final bool? isQrField;
+  const CustomTextField({super.key, required this.controller, required this.validationText, this.isQrField = false});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,9 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       validator: (value){
         if(value==null || value.isEmpty){
-          return validationText;
+          if(isQrField==null || isQrField==false){
+            return validationText;
+          }
         }
         return null;
       },

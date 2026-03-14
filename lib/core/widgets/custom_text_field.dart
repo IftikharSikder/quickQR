@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_qr/core/ui/dimensions.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -10,7 +11,7 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       validator: (value){
-        if(value==null || value.isNotEmpty){
+        if(value==null || value.isEmpty){
           return validationText;
         }
         return null;
@@ -30,10 +31,10 @@ OutlineInputBorder _outlineInputBorder({
   required BuildContext context,
   required bool isErrorBorder,
 }) => OutlineInputBorder(
-  borderRadius: BorderRadius.circular(10),
+  borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
   borderSide: BorderSide(
     color: isErrorBorder
         ? Theme.of(context).colorScheme.error
-        : Theme.of(context).primaryColor.withValues(alpha: .7),
+        : Theme.of(context).primaryColor.withValues(alpha: .45), width: 1.8
   ),
 );

@@ -8,5 +8,12 @@ class AppTextStyle {
     color: AppConstants.primaryColor.withValues(alpha: .9),
     fontSize: Dimensions.fontSizeDefault
   );
+
+  static final TextStyle buttonTextStyle = TextStyle(
+      fontFamily: 'Roboto',
+      color: Colors.white,
+      fontSize: Dimensions.fontSizeLarge,
+      fontWeight: FontWeight.bold
+  );
 }
 

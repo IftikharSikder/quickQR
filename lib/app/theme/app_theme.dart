@@ -12,7 +12,13 @@ class AppTheme {
       titleTextStyle: TextStyle(fontSize: Dimensions.fontSizeLarge),
       toolbarHeight: 40,
     ),
-    elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(backgroundColor: Colors.blue)),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusDefault)),
+      ),
+    ),
     colorScheme: ColorScheme(
       primary: primaryColor,
       onPrimary: Colors.white,

@@ -8,7 +8,7 @@ import 'features/qr/bloc/empty_qr/empty_qr_cubit.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  ServiceLocator.servicesLocator();
+  DependencyInjector.servicesLocator();
   runApp(const MyApp());
 }
 

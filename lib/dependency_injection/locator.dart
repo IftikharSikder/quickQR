@@ -2,7 +2,7 @@ import 'dependency_injection.dart';
 
 GetIt getIt = GetIt.instance;
 
-class ServiceLocator {
+class DependencyInjector {
   static void servicesLocator(){
     getIt.registerLazySingleton<EmptyQrQubit>(()=> EmptyQrQubit());
   }

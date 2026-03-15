@@ -13,3 +13,4 @@ class EmptyQrQubit extends Cubit<bool>{
     }
   }
 }
+

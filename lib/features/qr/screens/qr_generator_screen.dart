@@ -40,7 +40,15 @@ class _QrGeneratorScreenState extends State<QrGeneratorScreen> {
                 return CustomButton(buttonText: AppConstants.qrLabelText, onTap: () {
                   if(_formKey.currentState!.validate()){
                     context.read<EmptyQrQubit>().changeQrFieldStatus(controller: _qrTextController);
-                    debugPrint("==========$isQREmpty");
+
+                    final isQrEmpty = context.read<EmptyQrQubit>().state;
+
+                    if(isQrEmpty){
+                      print("No text");
+                    }
+                    else if(!isQrEmpty){
+                      print("Text Available");
+                    }
                   }
                 });
               })

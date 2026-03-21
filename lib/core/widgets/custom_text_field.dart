@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_qr/core/ui/dimensions.dart';
+import 'package:quick_qr/dependency_injection/dependency_injection.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -18,6 +20,12 @@ class CustomTextField extends StatelessWidget {
           }
         }
         return null;
+      },
+      onChanged: (value){
+        if(value.isEmpty){
+          // context.read<EmptyQrQubit>().isFirstTime=false;
+          // context.read<EmptyQrQubit>().changeQrFieldStatus(controller: controller);
+        }
       },
       decoration: InputDecoration(
           border: _outlineInputBorder(context: context, isErrorBorder: false),

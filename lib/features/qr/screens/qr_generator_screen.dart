@@ -30,13 +30,14 @@ class _QrGeneratorScreenState extends State<QrGeneratorScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Form(
       key: _formKey,
       child: BlocBuilder<EmptyQrQubit, bool>(builder: (context, isQREmpty){
         bool isFirstTime = context.read<EmptyQrQubit>().isFirstTime;
         final qubit = context.read<EmptyQrQubit>();
-        print("==> $isFirstTime");
-        print("==> $isQREmpty");
         return Scaffold(
           appBar: CustomAppbar(title: AppConstants.generateQR, centerTitle: true, isLeading:  !isFirstTime && !isQREmpty? true:false, leadingWidget: IconButton(onPressed: ()=> qubit.resetQrStatus(controller: _qrTextController), icon: Icon(Icons.arrow_back_ios))),
 
@@ -52,8 +53,6 @@ class _QrGeneratorScreenState extends State<QrGeneratorScreen> {
                 space22.h,
                 CustomButton(buttonText: AppConstants.qrLabelText, onTap: () {
                   context.read<EmptyQrQubit>().changeQrFieldStatus(controller: _qrTextController);
-                  print("==> $isFirstTime");
-                  print("==> $isQREmpty");
                 }),
                 space22.h,
                 isQREmpty && !isFirstTime?QrStatusWidget(isAlert: true):SizedBox()
@@ -62,14 +61,24 @@ class _QrGeneratorScreenState extends State<QrGeneratorScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                space8.h,
                 Center(
                   child: SizedBox(
-                    width: MediaQuery.of(context).size.width*.5,
+                    width: screenWidth*.5,
                     child: QrImageView(
                       data: _qrTextController.text.trim(),
                       version: QrVersions.auto,
                   )
                   ),
+                ),
+                space22.h,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 10,
+                    children: [
+                      CustomButton(buttonText: AppConstants.save, isQuickActionButton: true, buttonColor: Color(0xFF205993), icon: Icons.save, onTap: (){}),
+                      CustomButton(buttonText: AppConstants.share, isQuickActionButton: true, buttonColor: Color(0xFF1466b7), icon: Icons.share, onTap: (){}),
+                    ],
                 ),
                 space22.h,
                 !isFirstTime && !isQREmpty?QrStatusWidget(isSuccess: true):SizedBox()

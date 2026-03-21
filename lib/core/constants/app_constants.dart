@@ -14,4 +14,6 @@ class AppConstants {
   static const String qrButtonText = "GENERATE";
   static const String qrEmptyFieldText = "Please enter some text!";
   static const String qrSuccessText = "QR Code Generated!";
+  static const String save = "Save";
+  static const String share = "Share";
 }

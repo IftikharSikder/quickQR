@@ -4,7 +4,6 @@ import 'package:quick_qr/config/routes/app_routes.dart';
 import 'package:quick_qr/app/theme/app_theme.dart';
 import 'package:quick_qr/core/constants/app_constants.dart';
 import 'package:quick_qr/dependency_injection/locator.dart';
-import 'features/qr/bloc/create_qr/create_qr_bloc.dart';
 import 'features/qr/bloc/empty_qr/empty_qr_cubit.dart';
 
 void main() {
@@ -20,7 +19,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
       BlocProvider(create: (ctx)=> EmptyQrQubit()),
-      BlocProvider(create: (ctx)=> CreateQrBloc())
     ], child: MaterialApp.router(
       title: AppConstants.appName,
       debugShowCheckedModeBanner: false,

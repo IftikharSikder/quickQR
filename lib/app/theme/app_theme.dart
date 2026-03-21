@@ -11,6 +11,7 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       titleTextStyle: TextStyle(fontSize: Dimensions.fontSizeLarge),
       toolbarHeight: 40,
+      iconTheme: IconThemeData(color: Colors.white),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

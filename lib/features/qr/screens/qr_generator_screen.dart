@@ -7,8 +7,12 @@ import 'package:quick_qr/core/ui/dimensions.dart';
 import 'package:quick_qr/core/widgets/custom_appbar.dart';
 import 'package:quick_qr/core/widgets/custom_button.dart';
 import 'package:quick_qr/core/widgets/custom_text_field.dart';
+import 'package:quick_qr/features/qr/bloc/create_qr/create_qr_bloc.dart';
+import 'package:quick_qr/features/qr/bloc/create_qr/create_qr_event.dart';
+import 'package:quick_qr/features/qr/bloc/create_qr/create_qr_state.dart';
 import 'package:quick_qr/features/qr/bloc/empty_qr/empty_qr_cubit.dart';
 import 'package:quick_qr/features/qr/bloc/widgets/qr_status_widget.dart';
+import 'package:qr/qr.dart';
 
 class QrGeneratorScreen extends StatefulWidget {
   const QrGeneratorScreen({super.key});
@@ -31,21 +35,38 @@ class _QrGeneratorScreenState extends State<QrGeneratorScreen> {
           padding: EdgeInsets.all(Dimensions.paddingSizeOverLarge),
           child: BlocBuilder<EmptyQrQubit, bool>(builder: (context, isQREmpty){
             bool isFirstTime = context.read<EmptyQrQubit>().isFirstTime;
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(AppConstants.qrLabelText, style: AppTextStyle.labelTextStyle.copyWith(fontWeight: FontWeight.bold)),
-                space8.h,
-                CustomTextField(controller: _qrTextController, validationText: AppConstants.qrEmptyFieldText, isQrField: true),
-                space22.h,
-                CustomButton(buttonText: AppConstants.qrLabelText, onTap: () {
-                  context.read<EmptyQrQubit>().changeQrFieldStatus(controller: _qrTextController);
-                }),
-                space22.h,
-                isQREmpty?QrStatusWidget(isAlert: true):!isFirstTime && !isQREmpty?QrStatusWidget(isSuccess: true):SizedBox()
-              ],
-            );
+            return BlocBuilder<CreateQrBloc, CreateQrState>(builder: (context, state){
+              if(state.qrImage==null){
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(AppConstants.qrLabelText, style: AppTextStyle.labelTextStyle.copyWith(fontWeight: FontWeight.bold)),
+                    space8.h,
+                    CustomTextField(controller: _qrTextController, validationText: AppConstants.qrEmptyFieldText, isQrField: true),
+                    space22.h,
+                    CustomButton(buttonText: AppConstants.qrLabelText, onTap: () {
+                      context.read<EmptyQrQubit>().changeQrFieldStatus(controller: _qrTextController);
+                      context.read<CreateQrBloc>().add(CreateQr(msg: _qrTextController.text.trim()));
+                    }),
+                    space22.h,
+                    isQREmpty?QrStatusWidget(isAlert: true):!isFirstTime && !isQREmpty?QrStatusWidget(isSuccess: true):SizedBox()
+                  ],
+                );
+              }
+              else if(state.qrImage!=null){
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(state.qrImage.toString())
+                  ],
+                );
+              }
+              else{
+                return SizedBox();
+              }
+            });
           }),
         ),
       ),

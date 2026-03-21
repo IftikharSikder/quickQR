@@ -15,5 +15,12 @@ class AppTextStyle {
       fontSize: Dimensions.fontSizeLarge,
       fontWeight: FontWeight.bold
   );
+
+  static final TextStyle alertTextStyle = TextStyle(
+      fontFamily: 'Roboto',
+      color: Color(0xFFbb3530),
+      fontSize: Dimensions.fontSizeDefault,
+      fontWeight: FontWeight.bold
+  );
 }
 
